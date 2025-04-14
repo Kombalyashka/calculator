@@ -1,0 +1,67 @@
+<!-- Лабораторная работа №1. Неделя 1.
+1. Реализовать "решалку" квадратных уравнений. Использовать alert, prompt.
+1.1. Реализовать решение для комплексных чисел.
+2. Реализовать ввод коэф-тов с HTML-формы.
+
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Решалка</title>
+
+</head>
+<body>
+    <h1>Решалка квадратных уравнений</h1>
+    <p>Решение квадратных уравнений вида ax<sup>2</sup>+bx+c=0, где a, b и c — коэффициенты, причем a ≠ 0.</p>
+</header>
+
+    <form id="equation-form"> 
+        <label for="a">Введите <b>a</b>:</label>
+        <input type="number" id = "a">
+        <br> 
+        <label for="b">Введите <b>b</b>:</label>
+        <input type="number" id = "b">
+        <br> 
+        <label for="c">Введите <b>c</b>:</label>
+        <input type="number" id = "c">
+        <br> 
+        <button type="button" onclick="reshit()">Решить уравнение</button>
+    </form>
+
+    <script>
+        function reshit() {
+        let a = parseFloat(document.getElementById("a").value);
+        let b = parseFloat(document.getElementById("b").value);
+        let c = parseFloat(document.getElementById("c").value);
+
+        let d = b*b - 4*a*c;
+ 
+        let x1 = 0;
+        let x2 = 0;
+
+        if (a == 0){
+            alert("Ошибка!Так как a ≠ 0 ")
+        }
+ 
+        if (d == 0) {
+          x1 = (-b + Math.sqrt(d)) / 2*a;
+          alert("Корень равен: "+ x1);
+         }
+        else if (d > 0) {
+          x1 = (-b + Math.sqrt(d)) / 2*a;
+          x2 = (-b - Math.sqrt(d)) / 2*a;
+          alert("Корни равны: "+ x1 + ", "+ x2);
+        }
+        else if (d < 0) {
+          x1 = Math.sqrt(Math.abs(d));
+          x2 = Math.sqrt(Math.abs(d));
+          alert("Корни равны: "+ -b/2*a +" + " + x1/2*a + "i" + ", "+ -b/2*a +" - " + x2/2*a + "i");
+        }
+
+        }
+    </script>
+ 
+</body>
+</html>
